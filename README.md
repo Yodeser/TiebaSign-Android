@@ -18,3 +18,5 @@ HttpUtils.java是一个发送GET、POST的工具类、MyCookieJar.java是存贮c
 ### 应用截图
 <img src="https://raw.githubusercontent.com/abcmmee/TiebaSign-Android/master/picture/2.png" width="300" height="600">
 <img src="https://raw.githubusercontent.com/abcmmee/TiebaSign-Android/master/picture/3.png" width="300" height="600">
+<br/>
+还有些图片上传到GitHub上就显示不出来T_T，clone到本地就可以看到。
