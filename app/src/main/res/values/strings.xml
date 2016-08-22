@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">贴吧签到助手</string>
+
+    <!--首页的标题-->
+    <string name="title_activity_main">首页</string>
+
+    <!--首页右上角按钮的字符串-->
+    <string name="add">添加账号</string>
+    <string name="action_settings">设置</string>
+    <string name="title_activity_login">添加百度账号</string>
+
+    <!-- 登录界面字符串 -->
+    <string name="prompt_account">手机/邮箱/用户名</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="error_invalid_account">账号不能为空</string>
+    <string name="error_invalid_password">密码不能为空</string>
+    <string name="error_login_fail">登录失败</string>
+
+    <!--设置界面字符串-->
+    <string name="title_activity_settings">设置</string>
+    <string name="pref_title_auto_sign">自动签到</string>
+    <string name="pref_title_time_sign">签到时间</string>
+    <string name="pref_title_notifications">签到后通知栏提醒</string>
+    <string name="pref_title_ringtone">通知铃声</string>
+    <string name="pref_ringtone_silent">静音</string>
+
+    <!--执行与贴吧相关操作时的字符串-->
+    <string name="error_get_tieba_fail">获取贴吧列表失败</string>
+    <string name="get_tieba_success">获取贴吧列表成功</string>
+
+    <!--签到状态字符串-->
+    <string name="sign_status_success">是</string>
+    <string name="sign_status_error">否</string>
+    <string name="sign_status_unknow">未知</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="auto_sign"
+        android:title="@string/pref_title_auto_sign">
+    </SwitchPreference>
+
+    <com.abcmmee.tieba.ui.preference.TimePreference
+        android:defaultValue="00:15"
+        android:dependency="auto_sign"
+        android:key="time_sign"
+        android:title="@string/pref_title_time_sign"/>
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="auto_sign"
+        android:key="notifications_sign_message"
+        android:title="@string/pref_title_notifications"/>
+
+    <RingtonePreference
+        android:defaultValue="content://settings/system/notification_sound"
+        android:dependency="auto_sign"
+        android:key="notifications_sign_ringtone"
+        android:ringtoneType="notification"
+        android:title="@string/pref_title_ringtone"/>
+
+    <Preference
+        android:title="关于">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/abcmmee/TiebaSign-Android">
+        </intent>
+    </Preference>
+
+</PreferenceScreen>
