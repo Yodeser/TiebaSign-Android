@@ -6,6 +6,8 @@ https://yunpan.cn/cMm64hbL4WF8j  访问密码 c848
 ### 自己写安卓客户端的时候，参考过链接，会Python的话，直接看下面两个链接吧~
 https://github.com/chaonet/baidu_tieba_auto_sign<br/>
 https://www.v2ex.com/t/286771
+### 公告
+发现定时签到会有延迟现象
 ### 使用说明
 发布APP的时候，我把最小的SDK调成了8，也就是Android2.2，我自己的手机是Android5.1，模拟器是Android M。<br />
 咳咳、按道理软件是兼容Android2.2 ~ Android M。<br />
