@@ -30,8 +30,6 @@ public class AlarmUtils {
      * @param minute
      */
     public static void setServiceAlarm(Context context, int hour, int minute) {
-        Log.d(TAG, "AlarmService start");
-
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), hour, minute, 0);
         long triggerAtMillis = calendar.getTimeInMillis();
@@ -41,18 +39,7 @@ public class AlarmUtils {
             triggerAtMillis += 1000 * 60 * 60 * 24;
         }
 
-        Intent i = new Intent(context, SignIntentService.class);
-        PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
-        // API19以后AlarmManager.setRepeating不一定按时执行，官方文档有说明
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            // setExact不会重复执行，所以SignIntentService.class里面还要再设置一次
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pi);
-        } else {
-            int interval = 1000 * 60 * 60 * 24;
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, interval, pi);
-        }
+        setServiceAlarm(context, triggerAtMillis);
     }
 
     public static void setServiceAlarm(Context context, long triggerAtMillis) {
@@ -63,13 +50,22 @@ public class AlarmUtils {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         // API19以后AlarmManager.setRepeating不一定按时执行，官方文档有说明
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 参考：http://blog.csdn.net/henny_fack/article/details/51745643
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, pi);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // 参考：http://stackoverflow.com/questions/34074955/android-exact-alarm-is-always-3-minutes-off
+            // 参考：https://stackoverflow.com/questions/33260851/alarmmanager-not-working-as-expected-in-sleep-mode-on-s5-neo
+            AlarmManager.AlarmClockInfo alarmClockInfo = new AlarmManager.AlarmClockInfo(triggerAtMillis, pi);
+            alarmManager.setAlarmClock(alarmClockInfo, pi);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // setExact不会重复执行，所以SignIntentService.class里面还要再设置一次
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pi);
         } else {
             int interval = 1000 * 60 * 60 * 24;
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, interval, pi);
         }
+
     }
 
     /**

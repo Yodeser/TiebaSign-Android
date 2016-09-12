@@ -1,6 +1,7 @@
 package com.abcmmee.tieba.service;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -92,6 +93,7 @@ public class SignIntentService extends IntentService {
             // 发送通知
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             manager.notify(0, mBuilder.build());
+            Notification notification = mBuilder.build();
         }
     }
 

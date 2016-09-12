@@ -41,4 +41,8 @@ captures/
 
 .DS_Store
 
+#Test Filed
+app/src/androidTest/
+app/src/test/
+
 
